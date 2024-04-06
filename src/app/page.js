@@ -17,8 +17,8 @@ function ErrorMessage() {
 function ImageContainer({isclicked}) {
   return (
     <div className="relative">
-      <img className={`object-cover w-full h-full ${isclicked ? 'shake' : ''}`} src="/fourth.svg" alt="Outer-Image"/>
-      <img className="absolute inset-1/2 transform -translate-x-1/2 -translate-y-1/2" src="/bell.svg" alt="inner-Image"/>
+      <img className="object-cover w-full h-full" src="/fourth.svg" alt="Outer-Image"/>
+      <img className={`absolute transform -translate-x-1/2 -translate-y-1/2  ${isclicked ? 'bell inset-[40.5%]' : 'inset-1/2'}`} src="/bell.svg" alt="inner-Image"/>
     </div>
   );
 }
@@ -40,7 +40,7 @@ export default function Home() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setClicked(false);
-    }, 5000);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, [isclicked]); 

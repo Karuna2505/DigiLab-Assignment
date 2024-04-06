@@ -48,7 +48,7 @@ body {
   background: linear-gradient(90deg, rgba(157, 13, 61, 0) -10.64%, #DF522B 51.94%, rgba(199, 125, 44, 0) 116.51%);
 }
 
-/* Define the shaking animation */
+/* Define the shaking animation
 @keyframes shake {
   0% { transform: translateX(0); }
   25% { transform: translateX(-5px); }
@@ -58,6 +58,18 @@ body {
 }
 
 /* Apply the animation to the icon or image */
-.shake {
+/* .shake {
+  animation: shake 0.5s ease infinite;
+} */
+
+@keyframes shake {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(10deg); }
+  50% { transform: rotate(-10deg); }
+  75% { transform: rotate(10deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.bell {
   animation: shake 0.5s ease infinite;
 }
