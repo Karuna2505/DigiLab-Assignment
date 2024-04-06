@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+@layer utilities {
+  .border-gradient {
+    border-width: 1.4px;
+    border-style: solid;
+    border-image-source: linear-gradient(90deg, rgba(157, 13, 61, 0) -13.1%, #DE502C 53.99%, #C6802C 113.76%);
+    border-image-slice: 1;
+  }
+}
+
+.shadow-button {
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.12);
+}
+
+.button-bg {
+  background: linear-gradient(90deg, rgba(157, 13, 61, 0) -10.64%, #DF522B 51.94%, rgba(199, 125, 44, 0) 116.51%);
+}
+
+/* Define the shaking animation */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+/* Apply the animation to the icon or image */
+.shake {
+  animation: shake 0.5s ease infinite;
+}
