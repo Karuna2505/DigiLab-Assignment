@@ -23,20 +23,26 @@ function ImageContainer({isclicked}) {
 }
 
 function Button({isclicked,setClicked}) {
-  const handleNotification = () =>{
+  const handleNotification = () => {
     setClicked(!isclicked)
-    Notification.requestPermission().then((permission)=>{
-      if(permission==='granted'){
-        console.log("permission granted")
-        const notify=new Notification("First Notification",{
-          body:"This is Notificationn",
-          icon:'/bell.png',
-        })
-      }else{
-        console.log("permission denied")
+    Notification.requestPermission().then(permission => {
+      if (permission === 'granted') {
+        console.log("Permission granted");
+        try {
+          const notify = new Notification("Notification ", {
+            body: "Notification from Digilab",
+            icon: '/bell.svg',
+          });
+          console.log("Notification created successfully:", notify);
+        } catch (error) {
+          console.error("Error creating notification:", error);
+        }
+      } else {
+        console.log("Permission denied");
       }
-    })
+    });
   }
+  
   return (
     <button onClick={handleNotification} className="w-[327px] h-[47px] p-2 button-bg shadow-button font-semibold border-gradient gap-2">
       Send Notification
@@ -54,6 +60,17 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, [isclicked]); 
 
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').then(registration => {
+          console.log('Service worker registered:', registration);
+        }).catch(error => {
+          console.error('Service worker registration failed:', error);
+        });
+      });
+    }
+  }, []);
   return (
     <div className="flex flex-col justify-evenly items-center h-screen">
       <ErrorMessage />
