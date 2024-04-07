@@ -1,6 +1,5 @@
 "use client"
 import React, { useEffect,useState } from 'react';
-import toast from 'react-hot-toast';
 function ErrorMessage() {
   return (
     <div className="flex flex-col justify-center items-center w-[327px] min-h-[71px]">
@@ -26,7 +25,6 @@ function ImageContainer({isclicked}) {
 function Button({isclicked,setClicked}) {
   const handleNotification = () =>{
     setClicked(!isclicked)
-    toast("notification send")
   }
   return (
     <button onClick={handleNotification} className="w-[327px] h-[47px] p-2 button-bg shadow-button font-semibold border-gradient gap-2">
