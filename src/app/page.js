@@ -25,6 +25,17 @@ function ImageContainer({isclicked}) {
 function Button({isclicked,setClicked}) {
   const handleNotification = () =>{
     setClicked(!isclicked)
+    Notification.requestPermission().then((permission)=>{
+      if(permission==='granted'){
+        console.log("permission granted")
+        const notify=new Notification("First Notification",{
+          body:"This is Notificationn",
+          icon:'/bell.png',
+        })
+      }else{
+        console.log("permission denied")
+      }
+    })
   }
   return (
     <button onClick={handleNotification} className="w-[327px] h-[47px] p-2 button-bg shadow-button font-semibold border-gradient gap-2">
